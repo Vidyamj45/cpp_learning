@@ -1,0 +1,53 @@
+/*Video : CppNuts (multithreading series video 16)
+   launch::asynch -> thread created for Oddfind function, so thread id for main() and Oddfind are different
+   vidya@Vidya:~/mypractice/cpp/2026/threads$ g++ -std=c++11 -pthread launch_async.cpp
+vidya@Vidya:~/mypractice/cpp/2026/threads$ ./a.out
+Thread ID  130807306778432
+Thread Created if policy is std::launch::async
+Waiting for thread
+OddSum Thread ID of Oddfind 130807299569216
+902500000000000000
+Completed
+*/
+
+#include<iostream>
+#include<mutex>
+#include<thread>
+#include<chrono>
+#include<future>
+using namespace std;
+using namespace std::chrono;
+typedef long int ull;
+
+ull Oddfind( ull start, ull end)
+{
+    ull OddSum=0;
+    cout<< "Thread ID of Oddfind "<<std::this_thread::get_id()<<endl;
+    for(ull i=start;i<=end;i++)
+    {
+	if(i & 1 == 1)
+	    OddSum +=i;
+    }
+    return OddSum;
+}
+
+
+
+int main() {
+    ull start=0, end=1900000000;
+
+
+    cout<< "Thread ID  "<< std::this_thread::get_id() <<endl;
+    cout<< "Thread Created if policy is std::launch::async "<<endl;
+    
+    std::future<ull> OddSum = std::async(std::launch::async, Oddfind, start, end);
+
+    cout<< "Waiting for thread "<<endl;
+
+    cout<<"OddSum "<<OddSum.get()<<endl;
+
+    cout << "Completed "<<endl;
+
+
+    return 0;
+}
