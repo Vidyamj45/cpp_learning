@@ -1,0 +1,5 @@
+PS C:\Users\vidya\OneDrive\Documents\cpp_practice_2026\design_pattern\singleton_design_pattern> g++ -o singleton *.cpp
+PS C:\Users\vidya\OneDrive\Documents\cpp_practice_2026\design_pattern\singleton_design_pattern> .\singleton.exe
+New instance created.No of instances 1
+this msg is from user1
+this msg is from user1
