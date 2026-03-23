@@ -1,4 +1,4 @@
-**Example Code (2 virtual functions)**
+Example Code (2 virtual functions)
 
 class Base {
 
@@ -24,7 +24,7 @@ public:
 
 
 
-🔹 vtable (created at **compile time)**
+🔹 vtable (created at compile time)
 
 
 
@@ -46,7 +46,7 @@ Derived vtable
 
 
 
-🔹 **vptr (created at runtime)**
+🔹 vptr (created at runtime)
 
 
 
@@ -72,8 +72,7 @@ obj:
 
 | data   |
 
-||
-|-|
+
 
 
 
@@ -101,7 +100,7 @@ Derived constructor runs
 
 vptr → Derived vtable   ✅ (final)
 
-👉 **Same vptr is updated**
+👉 Same vptr is updated
 
 
 
@@ -156,4 +155,64 @@ f2 → index 1 → Base::f2
 👉 vptr = pointer to that list (per object)
 
 👉 constructor = connects vptr to correct vtable
+
+
+
+
+
+
+
+**####################################**
+
+**VIRTUAL DESTRUCTOR**
+
+**####################################**
+
+**class Base {**
+
+**public:**
+
+&#x20;   **virtual \~Base() {**
+
+&#x20;       **cout << "Base Destructor\\n";**
+
+&#x20;   **}**
+
+**};**
+
+
+
+**class Derived : public Base {**
+
+**public:**
+
+&#x20;   **\~Derived() {**
+
+&#x20;       **cout << "Derived Destructor\\n";**
+
+&#x20;   **}**
+
+**};**
+
+
+
+
+
+delete obj;
+
+&#x20;  ↓
+
+(via vptr → Derived destructor)
+
+&#x20;  ↓
+
+Derived Destructor executes
+
+&#x20;  ↓
+
+Compiler-added Base destructor call
+
+&#x20;  ↓
+
+Base Destructor executes
 
