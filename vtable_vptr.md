@@ -1,4 +1,4 @@
-Example Code (2 virtual functions)
+**Example Code (2 virtual functions)**
 
 class Base {
 
@@ -24,7 +24,9 @@ public:
 
 
 
-🔹 vtable (created at compile time)
+
+
+🔹 vtable (created at **compile time**)
 
 
 
@@ -46,7 +48,7 @@ Derived vtable
 
 
 
-🔹 vptr (created at runtime)
+🔹 vptr (created at **runtime**)
 
 
 
